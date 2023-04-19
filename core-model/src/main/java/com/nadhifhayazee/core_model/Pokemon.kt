@@ -1,7 +1,7 @@
 package com.nadhifhayazee.core_model
 
 data class Pokemon(
-    val id: Long?,
+    val id: Int?,
     val name: String?,
     val moves: List<Move>?,
     val types: List<Type>?
