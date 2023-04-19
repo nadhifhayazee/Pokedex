@@ -12,11 +12,13 @@ data class PokemonEntity(
     val pokemonId: Int?,
     @ColumnInfo(name= "pokemonName")
     val pokemonName: String?,
+    @ColumnInfo(name = "firstNickname")
+    val firstNickname: String,
     @ColumnInfo(name = "nickname")
-    val nickname: String,
+    var nickname: String,
     @ColumnInfo(name = "imageUrl")
     val imageUrl: String?,
     @ColumnInfo(name = "renamedCount")
-    val renamedCount: Int
+    var renamedCount: Int
 
 )

@@ -2,6 +2,7 @@ package com.nadhifhayazee.core_data.usecase
 
 import com.nadhifhayazee.core_data.mapper.PokemonMapper
 import com.nadhifhayazee.core_data.repository.MyPokemonRepository
+import com.nadhifhayazee.core_data.util.MyPokemonUtil
 import com.nadhifhayazee.core_model.Pokemon
 import com.nadhifhayazee.core_model.State
 import kotlinx.coroutines.flow.Flow
@@ -17,8 +18,7 @@ class CatchPokemonUseCase @Inject constructor(
     operator fun invoke(pokemon: Pokemon, nickName: String): Flow<State<Boolean>> {
         return flow {
             try {
-                val random = Random.nextDouble()
-                if (random >= 0.5) {
+                if (MyPokemonUtil.getFiftyFiftyPossibility()) {
                     myPokemonRepository.addPokemon(
                         PokemonMapper.pokemonToPokemonEntity(
                             pokemon,

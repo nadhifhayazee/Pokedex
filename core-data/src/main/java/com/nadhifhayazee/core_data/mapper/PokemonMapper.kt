@@ -11,7 +11,8 @@ object PokemonMapper {
             pokemonName = pokemon.name,
             nickname = nickName,
             imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png",
-            renamedCount = 1
+            renamedCount = 1,
+            firstNickname = nickName
         )
     }
 }

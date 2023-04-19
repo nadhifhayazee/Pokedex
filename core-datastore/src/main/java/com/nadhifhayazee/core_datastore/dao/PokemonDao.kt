@@ -9,8 +9,11 @@ interface PokemonDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addPokemon(pokemonEntity: PokemonEntity)
 
-    @Delete
-    suspend fun deletePokemon(pokemonEntity: PokemonEntity)
+    @Update
+    suspend fun updatePokemon(pokemonEntity: PokemonEntity)
+
+    @Query("DELETE FROM my_pokemon WHERE pokemonId=:id")
+    suspend fun deletePokemonById(id: Int)
 
     @Query("SELECT * FROM my_pokemon")
     suspend fun getAllMyPokemon(): List<PokemonEntity>

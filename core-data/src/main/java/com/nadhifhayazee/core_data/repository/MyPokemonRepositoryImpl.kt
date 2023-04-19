@@ -11,6 +11,10 @@ class MyPokemonRepositoryImpl @Inject constructor(
         return pokemonDao.addPokemon(pokemonEntity)
     }
 
+    override suspend fun updatePokemon(pokemonEntity: PokemonEntity) {
+        return pokemonDao.updatePokemon(pokemonEntity)
+    }
+
     override suspend fun getAllPokemon(): List<PokemonEntity> {
         return pokemonDao.getAllMyPokemon()
     }
@@ -19,7 +23,7 @@ class MyPokemonRepositoryImpl @Inject constructor(
         return pokemonDao.getMyPokemonById(id)
     }
 
-    override suspend fun deletePokemon(pokemonEntity: PokemonEntity) {
-        return pokemonDao.deletePokemon(pokemonEntity)
+    override suspend fun deletePokemonById(id: Int) {
+        return pokemonDao.deletePokemonById(id)
     }
 }
