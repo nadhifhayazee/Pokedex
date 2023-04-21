@@ -6,8 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity("my_pokemon")
 data class PokemonEntity(
-    @PrimaryKey(autoGenerate = true)
-    val id: Int? = 0,
+    @PrimaryKey()
     @ColumnInfo(name = "pokemonId")
     val pokemonId: Int?,
     @ColumnInfo(name= "pokemonName")

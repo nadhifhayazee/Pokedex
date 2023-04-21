@@ -11,7 +11,7 @@ object MyPokemonUtil {
     }
 
     fun isPrime(): Boolean {
-        val n = Random.nextInt(1, 8)
+        val n = Random.nextInt(2, 5)
         if (n < 2) {
             return false
         }
@@ -35,6 +35,10 @@ object MyPokemonUtil {
         }
 
         return "$firstName-$renamedCount"
+    }
+
+    fun getImageUrl(id: Int?): String{
+        return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/$id.png"
     }
 
 }

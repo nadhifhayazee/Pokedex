@@ -2,4 +2,17 @@
     <string name="app_name">Pokedex</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="weight">Weight</string>
+    <string name="types">Types</string>
+    <string name="height">Height</string>
+    <string name="moves">Moves</string>
+    <string name="catch_pokemon">Catch Pokemon</string>
+    <string name="release_pokemon">Release Pokemon</string>
+    <string name="back_button">Back button</string>
+    <string name="pokemon_image">Pokemon image</string>
+    <string name="hint_nickname">Input Nickname</string>
+    <string name="save_pokemon">Save Pokemon</string>
+    <string name="my_pokemon">My Pokemon</string>
+    <string name="data_is_empty">Data is empty!</string>
+    <string name="rename_pokemon">Rename Pokemon</string>
 </resources>

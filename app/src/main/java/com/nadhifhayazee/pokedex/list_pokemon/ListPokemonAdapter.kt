@@ -11,9 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.ImageLoader
 import coil.load
 import coil.request.ImageRequest
+import com.nadhifhayazee.core_data.util.MyPokemonUtil
 import com.nadhifhayazee.core_model.PokemonResult
 import com.nadhifhayazee.pokedex.R
 import com.nadhifhayazee.pokedex.databinding.ItemListPokemonLayoutBinding
+import com.nadhifhayazee.pokedex.util.ImageUtil
 
 class ListPokemonAdapter(private val onItemClicked: (PokemonResult) -> Unit) :
     PagingDataAdapter<PokemonResult, ListPokemonAdapter.ViewHolder>(diffUtil) {
@@ -38,27 +40,18 @@ class ListPokemonAdapter(private val onItemClicked: (PokemonResult) -> Unit) :
                 getItem(absoluteAdapterPosition)?.let { it1 -> onItemClicked.invoke(it1) }
             }
         }
+
         fun bindView(item: PokemonResult?) {
             binding.apply {
-                ivPokemon.load(item?.getImageUrl())
                 tvName.text = item?.name
-
-                val imageLoader = ImageLoader.Builder(binding.root.context).build()
-                val request = ImageRequest.Builder(binding.root.context)
-                    .data(item?.getImageUrl())
-                    .target { result ->
-                        ivPokemon.setImageDrawable(result)
-                        val bitmap = (result as BitmapDrawable).bitmap
-                        val rgbImage = bitmap.copy(Bitmap.Config.RGB_565, false)
-                        Palette.from(rgbImage).generate { palette ->
-                            val dominantColor =
-                                palette?.getDominantColor(binding.root.context.getColor(R.color.white))
-
-                            dominantColor?.let { cardView.setCardBackgroundColor(it) }
-                        }
-                    }
-                    .build()
-                imageLoader.enqueue(request)
+                ivPokemon.load(item?.getImageUrl())
+//                ImageUtil.getImageAndDominantColor(
+//                    binding.root.context,
+//                    ivPokemon,
+//                    item?.getImageUrl()
+//                ) { dominantColor ->
+//                    cardView.setCardBackgroundColor(dominantColor)
+//                }
             }
         }
 

@@ -13,6 +13,7 @@ class GetDetailPokemonUseCase @Inject constructor(
 
     operator fun invoke(name: String): Flow<State<Pokemon>> {
         return flow {
+            emit(State.Loading())
             try {
                 val response = pokemonRepository.getDetailPokemon(name)
                 if (response.isSuccessful && response.body() != null) {

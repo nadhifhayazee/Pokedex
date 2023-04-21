@@ -20,11 +20,12 @@ class ListPokemonViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _pokemonListState =
-        MutableStateFlow<State<PagingData<PokemonResult>>>(State.Loading())
+        MutableStateFlow<State<PagingData<PokemonResult>>>(State.Init())
     val pokemonListState get() = _pokemonListState.asStateFlow()
 
     fun getPokemonList() {
         viewModelScope.launch {
+            _pokemonListState.value  = State.Loading()
             getPokemonListUseCase().cachedIn(this).collectLatest {
                 _pokemonListState.value = State.Success(it)
             }

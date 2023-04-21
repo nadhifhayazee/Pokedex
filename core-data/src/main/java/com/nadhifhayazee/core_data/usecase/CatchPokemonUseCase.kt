@@ -15,20 +15,17 @@ class CatchPokemonUseCase @Inject constructor(
 ) {
 
 
-    operator fun invoke(pokemon: Pokemon, nickName: String): Flow<State<Boolean>> {
+    suspend operator fun invoke(pokemon: Pokemon, nickName: String): Flow<State<Boolean>> {
         return flow {
+            emit(State.Loading())
             try {
-                if (MyPokemonUtil.getFiftyFiftyPossibility()) {
-                    myPokemonRepository.addPokemon(
-                        PokemonMapper.pokemonToPokemonEntity(
-                            pokemon,
-                            nickName
-                        )
+                myPokemonRepository.addPokemon(
+                    PokemonMapper.pokemonToPokemonEntity(
+                        pokemon,
+                        nickName
                     )
-                    emit(State.Success(true))
-                } else {
-                    emit(State.Error("Failed to catch pokemon"))
-                }
+                )
+                emit(State.Success(true))
             } catch (e: Exception){
                 emit(State.Error("Failed to catch pokemon"))
             }

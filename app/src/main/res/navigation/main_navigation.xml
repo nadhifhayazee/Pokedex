@@ -1,13 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
     app:startDestination="@id/fragmentListPokemon">
 
     <fragment
         android:id="@+id/fragmentListPokemon"
         android:name="com.nadhifhayazee.pokedex.list_pokemon.ListPokemonFragment"
-        android:label="ListPokemonFragment" />
+        android:label="ListPokemonFragment">
+        <action
+            android:id="@+id/action_fragmentListPokemon_to_fragmentDetailPokemon"
+            app:destination="@id/fragmentDetailPokemon" />
+        <action
+            android:id="@+id/action_fragmentListPokemon_to_fragmentMyPokemon"
+            app:destination="@id/fragmentMyPokemon" />
+    </fragment>
 
+    <fragment
+        android:id="@+id/fragmentDetailPokemon"
+        android:name="com.nadhifhayazee.pokedex.detail_pokemon.DetailPokemonFragment"
+        android:label="DetailPokemonFragment" />
+
+    <fragment
+        android:id="@+id/fragmentMyPokemon"
+        android:name="com.nadhifhayazee.pokedex.my_pokemon.MyPokemonFragment"
+        android:label="MyPokemonFragment" >
+        <action
+            android:id="@+id/action_fragmentMyPokemon_to_fragmentDetailPokemon"
+            app:destination="@id/fragmentDetailPokemon" />
+    </fragment>
 </navigation>

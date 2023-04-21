@@ -1,6 +1,7 @@
 package com.nadhifhayazee.core_data.mapper
 
 import com.nadhifhayazee.core_datastore.entity.PokemonEntity
+import com.nadhifhayazee.core_model.MyPokemon
 import com.nadhifhayazee.core_model.Pokemon
 
 object PokemonMapper {
@@ -14,5 +15,17 @@ object PokemonMapper {
             renamedCount = 1,
             firstNickname = nickName
         )
+    }
+
+    fun pokemonEntityToMyPokemon(list: List<PokemonEntity>?): List<MyPokemon> {
+       return list?.map { item ->
+            MyPokemon(
+                id = item.pokemonId,
+                name = item.pokemonName,
+                nickname = item.nickname,
+                imageUrl = item.imageUrl
+            )
+
+        } ?: listOf()
     }
 }
